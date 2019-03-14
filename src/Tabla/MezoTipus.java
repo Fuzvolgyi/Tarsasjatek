@@ -10,7 +10,7 @@ package Tabla;
  *
  * @author FZs
  */
-public enum IMezoTipus {
+public enum MezoTipus {
     START,
     CEL,
     SEMLEGES,

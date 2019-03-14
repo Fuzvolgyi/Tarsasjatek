@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tabla;
+
+package Jatekosok;
 
 /**
  *
  * @author FZs
  */
-public interface Mezo {
-
-    public void leptet();
-
-    public void kartyatHuz();
-
+public interface IJatekos {
+    
+    public int dobas();
+    
+    public void lepes();
+    
 }

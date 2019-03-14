@@ -15,61 +15,57 @@ import java.util.ArrayList;
  */
 public class Tabla {
     
-    private int mezoHossz; 
-    private final ArrayList<Tabla> TABLA;
-    private IMezoTipus mezoTipus;
+    private int mezoHossz = 60; 
 
-    public Tabla(int mezohossz) {
-        this.mezoHossz = mezohossz;
-        this.TABLA = tablaLetrehoz();
+    private ArrayList<MezoTipus> tabla;
+    private MezoTipus mezoTipus;
+
+    public Tabla() {
+        this.tabla = tablaLetrehoz();
+        
     }
 
-    public ArrayList<Tabla> getTABLA() {
-        return TABLA;
+    public ArrayList<MezoTipus> getTABLA() {
+        return tabla;
     }
 
-    
-
-    public IMezoTipus getMezoTipus() {
+    public MezoTipus getMezoTipus() {
         return mezoTipus;
     }
 
-    public void setMezoTipus(IMezoTipus mezoTipus) {
+    public void setMezoTipus(MezoTipus mezoTipus) {
         this.mezoTipus = mezoTipus;
     }
 
-    
-    
-    private ArrayList<Tabla> tablaLetrehoz() {
-        ArrayList t = new ArrayList() ;
-        tablaFeltolt(t);
-        return t;
+    private ArrayList<MezoTipus> tablaLetrehoz() {
+        tabla = new ArrayList<>();
+        tablafeltolt();
+        return tabla;
     }
 
-    private void tablaFeltolt(ArrayList t) {
-        for (int i = 0; i < mezoHossz; i++) {
-            t.add(i, 0);
-            }
+    private void tablafeltolt() {
+        tabla.add(0, MezoTipus.START);
+        for (int i = 1; i < mezoHossz - 1; i++) {
+            tabla.add(i ,mezoTipus.SEMLEGES);
+        }
+          tabla.add(MezoTipus.CEL);
     }
 
-    public static void tablaKiir ( ArrayList t){
-        for (int i = 0; i < t.size(); i++) {
-            if (i < t.size()-1) {
-                System.out.print(t.get(i) + "_");
-            } else{
-                System.out.print(t.get(i));
-                System.out.println("");
-            }
-                
-    }  
+    public void tablaKiir(){
+        for (int i = 0; i < tabla.size() - 1; i++) {
+            System.out.print(tabla.get(i) + "_");
+        }
+        System.out.println(tabla.get(mezoHossz - 1));
+        System.out.println(System.lineSeparator());
+    }
+
+    
+    
+   
+   
 
    
-        
-       
-        
-    }
-}
-    
-    
-    
+                
+   }
 
+   
