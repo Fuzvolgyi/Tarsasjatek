@@ -18,9 +18,7 @@ public class Jatekos implements IJatekos {
     private String nev;
     private int hely;
     private boolean nyert;
-    private List<Jatekos> jatekosLista;
     Random rd = new Random();
-    public int jatekosokSzama = 3;
 
     public Jatekos(String nev) {
         this.nev = nev;
@@ -50,10 +48,6 @@ public class Jatekos implements IJatekos {
         this.nyert = nyert;
     }
 
-    public int getJatekosokSzama() {
-        return jatekosokSzama;
-    }
-    
     
 
 //</editor-fold>
