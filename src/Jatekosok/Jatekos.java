@@ -5,8 +5,7 @@
  */
 package Jatekosok;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Random;
 
 /**
@@ -19,9 +18,10 @@ public class Jatekos implements IJatekos {
     private int hely;
     private boolean nyert;
     Random rd = new Random();
-
-    public Jatekos(String nev) {
-        this.nev = nev;
+    Nevek [] nevTomb = Nevek.values();
+    
+    public Jatekos() {
+        this.nev = nevBeallit();
         this.hely = 0;
         this.nyert = false;
 
@@ -31,7 +31,7 @@ public class Jatekos implements IJatekos {
     public String getNev() {
         return nev;
     }
-    
+
     public int getHely() {
         return hely;
     }
@@ -66,6 +66,11 @@ public class Jatekos implements IJatekos {
     @Override
     public String toString() {
         return "Jatekos{" + "nev=" + nev + ", hely=" + hely + ", nyert=" + nyert + '}';
+    }
+
+    private String nevBeallit() {
+        String nev = nevTomb[rd.nextInt(nevTomb.length)].toString();
+        return nev;
     }
 
 }

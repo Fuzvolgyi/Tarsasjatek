@@ -27,7 +27,7 @@ public abstract class Logika {
 
     public static void jatekosokLetrehoz(List<Jatekos> jatekosLista) {
         for (int i = 1; i < 3 + 1; i++) {
-            Jatekos temp = new Jatekos("Jatekos_" + i);
+            Jatekos temp = new Jatekos();
             jatekosLista.add(temp);
         }
 
