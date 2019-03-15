@@ -36,7 +36,7 @@ public class Jatekos implements IJatekos {
         return hely;
     }
     
-    private void setHely(int hely) {
+    public void setHely(int hely) {
         this.hely = hely;
     }
     
