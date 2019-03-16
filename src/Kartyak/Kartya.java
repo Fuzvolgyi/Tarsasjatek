@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tabla;
+
+package Kartyak;
 
 /**
  *
  * @author FZs
  */
-public interface IMezo {
-
-    public void leptet();
-
-    public void kartyatHuz();
-
+public interface Kartya {
+    
+    void kovetkezmeny();
+    
+    
 }

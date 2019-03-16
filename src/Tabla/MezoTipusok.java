@@ -10,11 +10,12 @@ package Tabla;
  *
  * @author FZs
  */
-public enum MezoTipus {
+public enum MezoTipusok {
     START,
     CEL,
     SEMLEGES,
+    KARTYATHUZ,
     JO,
-    ROSSZ,
-    KARTYATHUZ
+    ROSSZ
+    
 }

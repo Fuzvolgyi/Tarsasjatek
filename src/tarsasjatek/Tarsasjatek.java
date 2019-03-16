@@ -34,46 +34,4 @@ public class Tarsasjatek {
 
     }
 
-//    private static void jatekIndit() {
-//        Tabla jatekTabla = new Tabla();
-//        jatekTabla.tablaKiir();
-//        List<Jatekos> jatekosLista = new ArrayList<>();
-//        jatekosokLetrehoz(jatekosLista);
-//        fordulo(jatekTabla, jatekosLista);
-//
-//    }
-//
-//    public static void jatekosokLetrehoz(List<Jatekos> jatekosLista) {
-//        for (int i = 1; i < 3 + 1; i++) {
-//            Jatekos temp = new Jatekos("Jatekos_" + i);
-//            jatekosLista.add(temp);
-//        }
-//
-//    }
-//
-//    private static void fordulo(Tabla jatekTabla, List<Jatekos> jatekosLista) {
-//        while (!vegeVizsgalat(jatekTabla, jatekosLista)) {
-//            mindenkiLep(jatekosLista);
-//        }
-//
-//    }
-//
-//    private static void mindenkiLep(List<Jatekos> jatekosLista) {
-//        for (int i = 0; i < jatekosLista.size(); i++) {
-//            jatekosLista.get(i).lepes();
-//            System.out.println(jatekosLista.get(i));
-//        }
-//    }
-//
-//    private static boolean vegeVizsgalat(Tabla jatekTabla, List<Jatekos> jatekosLista) {
-//        boolean eredmeny = false;
-//        for (int i = 0; i < jatekosLista.size(); i++) {
-//            if (jatekosLista.get(i).getHely() > jatekTabla.getTABLA().size()) {
-//                jatekosLista.get(i).setNyert(true);
-//                eredmeny = true;
-//                System.out.println("A nyertes: " + jatekosLista.get(i));
-//            }
-//        }
-//        return eredmeny;
-//    }
 }

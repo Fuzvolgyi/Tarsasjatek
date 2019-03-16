@@ -7,6 +7,7 @@
 package Tabla;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,46 +15,74 @@ import java.util.ArrayList;
  */
 public class Tabla {
 
-    private final int mezoHossz = 60;
-    private ArrayList<MezoTipus> tabla;
-    private MezoTipus mezoTipus;
+    private final int MEZOHOSSZ = 60;
+    private ArrayList<MezoTipusok> tabla;
+    private MezoTipusok mezoTipus;
+    private MezoTipusok[] mezoTipusTomb = MezoTipusok.values();
+    private int kiamaradoMezokSzama = 3;
+    Random rd = new Random();
+    
 
     public Tabla() {
         this.tabla = tablaLetrehoz();
     }
 
-    public ArrayList<MezoTipus> getTABLA() {
+    public ArrayList<MezoTipusok> getTABLA() {
         return tabla;
     }
 
-    public MezoTipus getMezoTipus() {
+    public MezoTipusok getMezoTipus() {
         return mezoTipus;
     }
 
-    public void setMezoTipus(MezoTipus mezoTipus) {
+    public void setMezoTipus(MezoTipusok mezoTipus) {
         this.mezoTipus = mezoTipus;
     }
 
-    private ArrayList<MezoTipus> tablaLetrehoz() {
+    private ArrayList<MezoTipusok> tablaLetrehoz() {
         tabla = new ArrayList<>();
         tablafeltolt();
         return tabla;
     }
 
-    private void tablafeltolt() {
-        tabla.add(0, MezoTipus.START);
-        for (int i = 1; i < mezoHossz - 1; i++) {
-            tabla.add(i, mezoTipus.SEMLEGES);
-        }
-        tabla.add(MezoTipus.CEL);
-    }
+//    private void tablafeltolt() {
+//        tabla.add(0, MezoTipusok.START);
+//        for (int i = 1; i < MEZOHOSSZ - 1; i++) {
+//            int random = rd.nextInt(mezoTipusTomb.length-2)+2;
+//            MezoTipusok temp = mezoTipusTomb[random];
+//            tabla.add(i, temp);
+//        }
+//        tabla.add(MezoTipusok.CEL);
+//    }
 
+    private void tablafeltolt() {
+        tabla.add(0, MezoTipusok.START);
+        int semlegesSzamlalo = 0;
+        for (int i = 1; i < MEZOHOSSZ - 1; i++) {
+            if (semlegesSzamlalo > 5) {
+                tabla.add(mezoTipusTomb[rd.nextInt(1)+4]) ;
+                semlegesSzamlalo = 0;
+            }else{
+                if (rd.nextInt(100) < 40 && tabla.get( i-1) != mezoTipus.KARTYATHUZ) {
+                    tabla.add(mezoTipus.KARTYATHUZ);
+                }else{
+                tabla.add(mezoTipus.SEMLEGES);
+                }
+                semlegesSzamlalo++;
+            }
+        }
+        tabla.add(MezoTipusok.CEL);
+    }
+    
     public void tablaKiir() {
         for (int i = 0; i < tabla.size() - 1; i++) {
             System.out.print(tabla.get(i) + "_");
         }
-        System.out.println(tabla.get(mezoHossz - 1));
+        System.out.println(tabla.get(MEZOHOSSZ - 1));
         System.out.println(System.lineSeparator());
     }
 
+    
+
+    
 }

@@ -5,7 +5,6 @@
  */
 package Jatekosok;
 
-
 import java.util.Random;
 
 /**
@@ -13,13 +12,13 @@ import java.util.Random;
  * @author FZs
  */
 public class Jatekos implements IJatekos {
-    
+
     private String nev;
     private int hely;
     private boolean nyert;
     Random rd = new Random();
-    Nevek [] nevTomb = Nevek.values();
-    
+    Nevek[] nevTomb = Nevek.values();
+
     public Jatekos() {
         this.nev = nevBeallit();
         this.hely = 0;
@@ -35,34 +34,31 @@ public class Jatekos implements IJatekos {
     public int getHely() {
         return hely;
     }
-    
+
     public void setHely(int hely) {
         this.hely = hely;
     }
-    
+
     public boolean isNyert() {
         return nyert;
     }
-    
+
     public void setNyert(boolean nyert) {
         this.nyert = nyert;
     }
 
-    
-
 //</editor-fold>
-    
     @Override
     public int dobas() {
-        return rd.nextInt(7);
+        return rd.nextInt(6)+1;
     }
 
     @Override
     public void lepes() {
-        int random = dobas();
-        setHely(getHely() + random);
+        int lepesszam = dobas();
+        setHely(getHely() + lepesszam);
     }
-    
+
     @Override
     public String toString() {
         return "Jatekos{" + "nev=" + nev + ", hely=" + hely + ", nyert=" + nyert + '}';

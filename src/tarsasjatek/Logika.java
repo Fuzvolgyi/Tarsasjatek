@@ -65,8 +65,10 @@ public abstract class Logika {
             if (jatekos.getHely() != 0 && jatekos != jatekosLista.get(i) 
                     && jatekos.getHely() == jatekosLista.get(i).getHely()) {
                 jatekosLista.get(i).setHely(0);
-                System.out.println(jatekos.getNev() + " Kiütötte a " + jatekosLista.get(i).getNev() 
+                System.err.println(jatekos.getNev() + " Kiütötte a " + jatekosLista.get(i).getNev() 
                         + " Játékost... Vissza a Start mezőre!");
+//                System.out.println(jatekos.getNev() + " Kiütötte a " + jatekosLista.get(i).getNev() 
+//                        + " Játékost... Vissza a Start mezőre!");
             }
         }
     }
