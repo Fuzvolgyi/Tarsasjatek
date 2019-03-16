@@ -45,25 +45,15 @@ public class Tabla {
         return tabla;
     }
 
-//    private void tablafeltolt() {
-//        tabla.add(0, MezoTipusok.START);
-//        for (int i = 1; i < MEZOHOSSZ - 1; i++) {
-//            int random = rd.nextInt(mezoTipusTomb.length-2)+2;
-//            MezoTipusok temp = mezoTipusTomb[random];
-//            tabla.add(i, temp);
-//        }
-//        tabla.add(MezoTipusok.CEL);
-//    }
-
     private void tablafeltolt() {
         tabla.add(0, MezoTipusok.START);
         int semlegesSzamlalo = 0;
         for (int i = 1; i < MEZOHOSSZ - 1; i++) {
             if (semlegesSzamlalo > 5) {
-                tabla.add(mezoTipusTomb[rd.nextInt(1)+4]) ;
+                tabla.add(mezoTipusTomb[rd.nextInt(2)+4]) ;
                 semlegesSzamlalo = 0;
             }else{
-                if (rd.nextInt(100) < 40 && tabla.get( i-1) != mezoTipus.KARTYATHUZ) {
+                if (rd.nextInt(100) < 30 && tabla.get( i-1) != mezoTipus.KARTYATHUZ) {
                     tabla.add(mezoTipus.KARTYATHUZ);
                 }else{
                 tabla.add(mezoTipus.SEMLEGES);

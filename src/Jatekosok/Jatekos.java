@@ -11,16 +11,16 @@ import java.util.Random;
  *
  * @author FZs
  */
-public class Jatekos implements IJatekos {
+public class Jatekos {
 
-    private String nev;
+    private final String NEV;
     private int hely;
     private boolean nyert;
     Random rd = new Random();
     Nevek[] nevTomb = Nevek.values();
 
     public Jatekos() {
-        this.nev = nevBeallit();
+        this.NEV = nevBeallit();
         this.hely = 0;
         this.nyert = false;
 
@@ -28,7 +28,7 @@ public class Jatekos implements IJatekos {
 
     //<editor-fold defaultstate="collapsed" desc="Getter - Setter">
     public String getNev() {
-        return nev;
+        return NEV;
     }
 
     public int getHely() {
@@ -48,12 +48,11 @@ public class Jatekos implements IJatekos {
     }
 
 //</editor-fold>
-    @Override
+
     public int dobas() {
         return rd.nextInt(6)+1;
     }
 
-    @Override
     public void lepes() {
         int lepesszam = dobas();
         setHely(getHely() + lepesszam);
@@ -61,12 +60,12 @@ public class Jatekos implements IJatekos {
 
     @Override
     public String toString() {
-        return "Jatekos{" + "nev=" + nev + ", hely=" + hely + ", nyert=" + nyert + '}';
+        return "Jatekos{" + "nev=" + NEV + ", hely=" + hely + ", nyert=" + nyert + '}';
     }
 
     private String nevBeallit() {
-        String nev = nevTomb[rd.nextInt(nevTomb.length)].toString();
-        return nev;
+        String megnevezes = nevTomb[rd.nextInt(nevTomb.length)].toString();
+        return megnevezes;
     }
 
 }
