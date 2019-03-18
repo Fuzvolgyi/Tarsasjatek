@@ -43,14 +43,17 @@ public abstract class Logika {
 
     private static void mindenkiLep(Tabla jatekTabla, List<Jatekos> jatekosLista) {
         for (int i = 0; i < jatekosLista.size(); i++) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(jatekosLista.get(i).getNev())
-                    .append(" Jatekos a ");
+			Jatekos jatekos = jatekosLista.get(i);
+            //StringBuilder sb = new StringBuilder();
+			jatekos.createSzoveg();
+            jatekos.addSzoveg(jatekosLista.get(i).getNev());
+            jatekos.addSzoveg(" Jatekos a ___");
             jatekosLista.get(i).lepes();
             mezoHatasVizsgalat(jatekosLista.get(i), jatekTabla);
-            sb.append(jatekosLista.get(i).getHely())
-                    .append(" mezőre lépett ");
-            System.out.println(sb);
+			String hely = String.valueOf(jatekosLista.get(i).getHely());
+            jatekos.addSzoveg(hely);
+            jatekos.addSzoveg(" mezőre lépett ");
+            jatekos.kiirSzoveg();
             jatekosKiutes(jatekosLista.get(i), jatekosLista);
 
         }
@@ -58,7 +61,7 @@ public abstract class Logika {
 
     private static void jatekosKiutes(Jatekos jatekos, List<Jatekos> jatekosLista) {
         for (int i = 0; i < jatekosLista.size(); i++) {
-            StringBuilder sb4 = new StringBuilder();
+			StringBuilder sb4 = new StringBuilder();
             if (jatekos.getHely() != 0 && jatekos != jatekosLista.get(i)
                     && jatekos.getHely() == jatekosLista.get(i).getHely()) {
                 sb4.append(jatekosLista.get(i).getNev())
@@ -79,32 +82,36 @@ public abstract class Logika {
 
     private static void mezoHatasVizsgalat(Jatekos jatekos, Tabla jatekTabla) {
         if (jatekos.getHely() < jatekTabla.getTABLA().size()) {
-            MezoTipusok jelenlegiMezo = jatekTabla.getTABLA().get(jatekos.getHely());
-            if (jelenlegiMezo != MezoTipusok.SEMLEGES) {
-                if (jelenlegiMezo == MezoTipusok.KARTYATHUZ) {
-                    kartyahuz(jatekos);
-                } else {
-                    if (jelenlegiMezo == MezoTipusok.JO) {
-                        joMezoTipus(jatekos);
-                    } else {
-                        rosszMezoTipus(jatekos);
-                    }
+			MezoTipusok jelenlegiMezo = jatekTabla.getTABLA().get(jatekos.getHely());
 
-                }
-            }
-        }
+			switch(jelenlegiMezo){
+				case SEMLEGES:
+					break;
+				case KARTYATHUZ:
+					kartyahuz(jatekos);
+					break;
+				case JO: 
+					joMezoTipus(jatekos);
+					break;
+				case ROSSZ:
+					rosszMezoTipus(jatekos);
+				case CEL:
+					break;
+				default:
+					break;
+			}
+		}
     }
 
     private static void joMezoTipus(Jatekos jatekos) {
-        StringBuilder sb2 = new StringBuilder();
-        sb2.append(jatekos.getNev())
-                .append("  játékosnak szerencséje volt ")
-                .append(jatekos.getHely())
-                .append(". helyett a ");
+        //StringBuilder sb2 = new StringBuilder();
+        jatekos.addSzoveg(" !!! játékosnak szerencséje volt ");
+        jatekos.addSzoveg(String.valueOf(jatekos.getHely()));
+        jatekos.addSzoveg(". helyett a ");
         jatekos.setHely(jatekos.getHely() + jatekos.dobas());
-        sb2.append(jatekos.getHely())
-                .append(". mezőre lép!");
-        System.out.println(sb2);
+        //jatekos.addSzoveg(String.valueOf(jatekos.getHely()));
+        //jatekos.addSzoveg(". mezőre lép!");
+        //System.out.println(sb2);
     }
 
     private static void rosszMezoTipus(Jatekos jatekos) {

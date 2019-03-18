@@ -16,6 +16,7 @@ public class Jatekos {
     private final String NEV;
     private int hely;
     private boolean nyert;
+	private StringBuilder szoveg;
     Random rd = new Random();
     Nevek[] nevTomb = Nevek.values();
 
@@ -23,8 +24,22 @@ public class Jatekos {
         this.NEV = nevBeallit();
         this.hely = 0;
         this.nyert = false;
-
     }
+	
+	public void createSzoveg()
+	{
+		this.szoveg = new StringBuilder();
+	}
+	
+	public void addSzoveg(String szoveg)
+	{
+		this.szoveg.append(" " + szoveg);
+	}
+
+	public void kiirSzoveg()
+	{
+		System.out.println(szoveg);
+	}
 
     //<editor-fold defaultstate="collapsed" desc="Getter - Setter">
     public String getNev() {
